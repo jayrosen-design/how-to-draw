@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export type DrawingCategory = 'person' | 'face' | 'cartoon' | 'animal' | 'landscape';
+export type DrawingCategory = 'person' | 'face' | 'animal';
 
 interface CategoryCardProps {
   category: DrawingCategory;
@@ -14,18 +14,18 @@ interface CategoryCardProps {
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ category, title, imageUrl, onSelect, delay }) => (
   <div 
-    className={`category-card category-card-${category} animate-slide-up`} 
+    className={`category-card category-card-${category} animate-slide-up flex-row justify-start`} 
     style={{ animationDelay: `${delay}ms` }}
     onClick={() => onSelect(category)}
   >
-    <div className="category-icon">
+    <div className="category-icon mr-4">
       <img 
         src={imageUrl} 
         alt={title} 
-        className="w-10 h-10 object-contain"
+        className="w-16 h-16 object-contain"
       />
     </div>
-    <h3 className="text-lg font-medium">{title}</h3>
+    <h3 className="text-xl font-medium">{title}</h3>
   </div>
 );
 
@@ -38,7 +38,7 @@ const CategoryMenu: React.FC = () => {
   
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+      <div className="flex flex-col gap-4">
         <CategoryCard 
           category="person" 
           title="Person" 
