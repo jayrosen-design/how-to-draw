@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -67,10 +68,10 @@ const DrawingCanvas: React.FC = () => {
           color: 'https://i.imgur.com/EiJqtF1.png'
         },
         animal: {
-          sketch: 'https://i.imgur.com/zzPBKCL.png',
-          refine: 'https://i.imgur.com/zzPBKCL.png',
-          ink: 'https://i.imgur.com/zzPBKCL.png',
-          color: 'https://i.imgur.com/zzPBKCL.png'
+          sketch: 'https://imgur.com/GO3X7FX.png',
+          refine: 'https://imgur.com/GO3X7FX.png',
+          ink: 'https://imgur.com/GO3X7FX.png',
+          color: 'https://imgur.com/GO3X7FX.png'
         }
       };
       
