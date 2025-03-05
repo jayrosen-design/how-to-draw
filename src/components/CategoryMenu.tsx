@@ -23,7 +23,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, title, imageUrl, 
         <img 
           src={imageUrl} 
           alt={title} 
-          className="w-40 h-40 object-contain"
+          className="w-64 h-64 object-contain"
         />
       </div>
       <h3 className="text-2xl font-medium">{title}</h3>
@@ -58,7 +58,7 @@ const CategoryMenu: React.FC = () => {
         <CategoryCard 
           category="animal" 
           title="Animal" 
-          imageUrl="https://i.imgur.com/zzPBKCL.png" 
+          imageUrl="https://imgur.com/GO3X7FX.png" 
           onSelect={handleCategorySelect}
           delay={300}
         />

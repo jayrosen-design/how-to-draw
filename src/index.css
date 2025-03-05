@@ -64,7 +64,7 @@
 
 @layer components {
   .category-card {
-    @apply relative w-full h-48 md:h-52 rounded-2xl bg-white shadow-lg overflow-hidden 
+    @apply relative w-full h-72 md:h-80 rounded-2xl bg-white shadow-lg overflow-hidden 
            flex items-center p-8 transition-transform duration-300 
            hover:scale-[1.02] hover:shadow-xl cursor-pointer;
   }
@@ -79,7 +79,7 @@
   }
   
   .category-icon {
-    @apply transition-transform duration-300 min-w-[160px];
+    @apply transition-transform duration-300 min-w-[256px];
   }
   
   .category-card:hover .category-icon {
