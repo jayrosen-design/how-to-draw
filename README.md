@@ -1,69 +1,58 @@
-# Welcome to your Lovable project
+# How to Draw Tutorials
 
-## Project info
+An interactive drawing tutorial application designed for elementary to middle-school students (3rd–5th grade), teaching them how to sketch, refine, ink, and color various subjects—such as faces, people, and animals—through a user-friendly interface.
 
-**URL**: https://lovable.dev/projects/735e8a84-8660-4626-a118-6cb57befef17
+---
 
-## How can I edit this code?
+## Table of Contents
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Screenshots](#screenshots)
 
-There are several ways of editing your application.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/735e8a84-8660-4626-a118-6cb57befef17) and start prompting.
+## Overview
+**How to Draw Tutorials** is a prototype application focusing on the fundamentals of drawing. Students follow a clear, step-by-step approach:
+1. **Sketch** the subject with basic shapes using different pencil hardnesses.
+2. **Refine** the sketch, adding details and correcting proportions.
+3. **Ink** the outlines using adjustable black markers.
+4. **Color** the drawing with a wide spectrum of markers.
 
-Changes made via Lovable will be committed automatically to this repo.
+The app is optimized for touchscreen tablets, making it easy for young learners to draw directly on the screen.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Features
+- **Category Selection**: Choose from different drawing subjects like Person, Face, or Animal.
+- **Step-by-Step Guides**: Provides structured lessons, from basic shape construction to detailed finishing.
+- **Tool Palette**: Select pencils (HB, B2, B6, blue pencil), erasers, black ink markers, and a variety of color markers.
+- **Clean, Touch-Friendly UI**: Large buttons, minimal clutter, and intuitive menus suitable for children.
+- **Save & Share** (Future Feature): Plans to allow saving final drawings and sharing them with teachers or classmates.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## Screenshots
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Main Menu
+Users can select the drawing tutorial category (Person, Face, Animal, etc.).
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+![Main Menu](https://github.com/jayrosen-design/how-to-draw/blob/main/screenshots/screencapture-how-to-draw-lovable-app-2025-03-05-16_50_10%20(1).png?raw=true "Main Menu")
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### Face Drawing - Sketch & Refine
+Guides the user in drawing faces step by step, starting with simple shapes and moving toward refined outlines.
 
-**Edit a file directly in GitHub**
+![Face Drawing - Sketch](https://github.com/jayrosen-design/how-to-draw/blob/main/screenshots/screencapture-how-to-draw-lovable-app-draw-face-2025-03-05-16_50_32.png?raw=true "Face Drawing - Sketch")
+![Face Drawing - Refine](https://github.com/jayrosen-design/how-to-draw/blob/main/screenshots/screencapture-how-to-draw-lovable-app-draw-face-2025-03-05-16_50_44.png?raw=true "Face Drawing - Refine")
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+### Person Drawing
+Walks the user through sketching human proportions, refining details, inking, and then coloring.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+![Person Drawing](https://github.com/jayrosen-design/how-to-draw/blob/main/screenshots/screencapture-how-to-draw-lovable-app-draw-person-2025-03-05-16_50_56.png?raw=true "Person Drawing")
 
-## What technologies are used for this project?
+---
 
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/735e8a84-8660-4626-a118-6cb57befef17) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
