@@ -29,23 +29,11 @@ const drawingInstructions: DrawingInstructions = {
     ink: "Trace over your refined sketch with bold, clean lines.",
     color: "Add colors to complete your face drawing!"
   },
-  cartoon: {
-    sketch: "Start with simple shapes to build your cartoon character's structure.",
-    refine: "Add character-defining features and exaggerate proportions for a cartoon feel.",
-    ink: "Outline your character with smooth, bold lines.",
-    color: "Use bright colors to make your cartoon character pop!"
-  },
   animal: {
     sketch: "Begin with basic shapes for the animal's body, head, and limbs.",
     refine: "Add details like fur, eyes, and distinctive animal features.",
     ink: "Create a clean outline of your animal drawing.",
     color: "Add realistic or fun colors to your animal!"
-  },
-  landscape: {
-    sketch: "Start with the horizon line and basic shapes for main landscape elements.",
-    refine: "Add more detail to trees, mountains, buildings, or other features.",
-    ink: "Create clean outlines of your landscape elements.",
-    color: "Add colors to bring your landscape to life!"
   }
 };
 
@@ -78,23 +66,11 @@ const DrawingCanvas: React.FC = () => {
           ink: 'https://i.imgur.com/EiJqtF1.png',
           color: 'https://i.imgur.com/EiJqtF1.png'
         },
-        cartoon: {
-          sketch: 'https://i.imgur.com/GO3X7FX.png',
-          refine: 'https://i.imgur.com/GO3X7FX.png',
-          ink: 'https://i.imgur.com/GO3X7FX.png',
-          color: 'https://i.imgur.com/GO3X7FX.png'
-        },
         animal: {
           sketch: 'https://i.imgur.com/zzPBKCL.png',
           refine: 'https://i.imgur.com/zzPBKCL.png',
           ink: 'https://i.imgur.com/zzPBKCL.png',
           color: 'https://i.imgur.com/zzPBKCL.png'
-        },
-        landscape: {
-          sketch: '/references/landscape-sketch.png',
-          refine: '/references/landscape-refine.png',
-          ink: '/references/landscape-ink.png',
-          color: '/references/landscape-color.png'
         }
       };
       

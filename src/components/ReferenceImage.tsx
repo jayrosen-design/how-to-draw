@@ -19,23 +19,11 @@ const referenceImages: Record<DrawingCategory, Record<DrawingStage, string>> = {
     ink: 'https://i.imgur.com/EiJqtF1.png',
     color: 'https://i.imgur.com/EiJqtF1.png'
   },
-  cartoon: {
-    sketch: 'https://i.imgur.com/GO3X7FX.png',
-    refine: 'https://i.imgur.com/GO3X7FX.png',
-    ink: 'https://i.imgur.com/GO3X7FX.png',
-    color: 'https://i.imgur.com/GO3X7FX.png'
-  },
   animal: {
     sketch: 'https://i.imgur.com/zzPBKCL.png',
     refine: 'https://i.imgur.com/zzPBKCL.png',
     ink: 'https://i.imgur.com/zzPBKCL.png',
     color: 'https://i.imgur.com/zzPBKCL.png'
-  },
-  landscape: {
-    sketch: '/references/landscape-sketch.png',
-    refine: '/references/landscape-refine.png',
-    ink: '/references/landscape-ink.png',
-    color: '/references/landscape-color.png'
   }
 };
 
