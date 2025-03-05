@@ -18,15 +18,15 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, title, imageUrl, 
     style={{ animationDelay: `${delay}ms` }}
     onClick={() => onSelect(category)}
   >
-    <div className="flex items-center w-full">
-      <div className="category-icon flex-shrink-0 mr-6">
+    <div className="flex flex-col items-center justify-center w-full">
+      <div className="category-icon mb-4">
         <img 
           src={imageUrl} 
           alt={title} 
           className="w-64 h-64 object-contain"
         />
       </div>
-      <h3 className="text-2xl font-medium">{title}</h3>
+      <h3 className="text-2xl font-medium text-center">{title}</h3>
     </div>
   </div>
 );
@@ -39,8 +39,8 @@ const CategoryMenu: React.FC = () => {
   };
   
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <div className="flex flex-col gap-6">
+    <div className="w-full max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <CategoryCard 
           category="person" 
           title="Person" 
