@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -55,10 +54,8 @@ const DrawingCanvas: React.FC = () => {
   const navigate = useNavigate();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   
-  // Validate the category parameter
   const validCategory = (category || 'person') as DrawingCategory;
   
-  // State for current stage, tool, and other settings
   const [currentStage, setCurrentStage] = useState<DrawingStage>('sketch');
   const [currentTool, setCurrentTool] = useState<DrawingTool>('pencil');
   const [pencilHardness, setPencilHardness] = useState<PencilHardness>('HB');
@@ -66,10 +63,8 @@ const DrawingCanvas: React.FC = () => {
   const [historyCount, setHistoryCount] = useState(0);
   const [isTracing, setIsTracing] = useState(false);
   
-  // Reference image path for the current category and stage
   const referenceImagePath = `/references/${validCategory}-${currentStage}.png`;
   
-  // Set the initial tool based on the stage
   useEffect(() => {
     switch (currentStage) {
       case 'sketch':
@@ -84,27 +79,23 @@ const DrawingCanvas: React.FC = () => {
         break;
       case 'color':
         setCurrentTool('color');
-        setCurrentColor('#FF6B6B'); // Set an initial color
+        setCurrentColor('#FF6B6B');
         break;
     }
   }, [currentStage]);
   
-  // Handle stage change
   const handleStageChange = (stage: DrawingStage) => {
     setCurrentStage(stage);
     toast.info(`Switched to ${stage} mode!`);
-    // Turn off tracing when changing stages
     setIsTracing(false);
   };
   
-  // Handle saving the drawing
   const handleSave = () => {
     const canvas = document.querySelector('canvas');
     if (!canvas) return;
     
     const dataUrl = canvas.toDataURL();
     
-    // Save to local storage
     const success = saveCanvasToLocalStorage(
       Date.now().toString(),
       dataUrl,
@@ -118,18 +109,18 @@ const DrawingCanvas: React.FC = () => {
     }
   };
   
-  // Handle undo
   const handleUndo = () => {
-    // This will be handled by the Canvas component
-    toast.info('Undo last action');
+    if (window.undoCanvas) {
+      window.undoCanvas();
+    } else {
+      toast.error('Undo functionality not available');
+    }
   };
   
-  // Update history count
   const handleNewHistoryEntry = () => {
     setHistoryCount(prev => prev + 1);
   };
   
-  // Toggle tracing overlay
   const handleToggleTrace = (tracingState: boolean) => {
     setIsTracing(tracingState);
     if (tracingState) {
@@ -139,7 +130,6 @@ const DrawingCanvas: React.FC = () => {
   
   return (
     <div className="min-h-screen w-full max-w-7xl mx-auto px-4 py-6 flex flex-col">
-      {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <Button 
           variant="ghost" 
@@ -155,13 +145,11 @@ const DrawingCanvas: React.FC = () => {
         </h1>
       </div>
       
-      {/* Stage Indicator */}
       <StageIndicator 
         currentStage={currentStage} 
         onStageChange={handleStageChange} 
       />
       
-      {/* Instruction Box */}
       <div className="bg-app-blue/10 border border-app-blue/20 p-4 rounded-lg mb-6 animate-fade-in">
         <p className="text-center font-medium text-gray-700">
           {drawingInstructions[validCategory]?.[currentStage] || 
@@ -170,9 +158,7 @@ const DrawingCanvas: React.FC = () => {
       </div>
       
       <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-        {/* Left Sidebar: Reference Image and Drawing Tools */}
         <div className="md:order-1 md:w-64 flex flex-col gap-6">
-          {/* Reference Image */}
           <ReferenceImage 
             category={validCategory}
             stage={currentStage}
@@ -180,7 +166,6 @@ const DrawingCanvas: React.FC = () => {
             isTracing={isTracing}
           />
           
-          {/* Drawing Tools */}
           <div className="flex md:flex-col justify-center md:justify-start items-center gap-4 p-2">
             <DrawingTools 
               stage={currentStage}
@@ -196,7 +181,6 @@ const DrawingCanvas: React.FC = () => {
           </div>
         </div>
         
-        {/* Canvas Container */}
         <div className="flex-1 canvas-container">
           <Canvas 
             width={800} 

@@ -34,8 +34,8 @@ const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, onStageCh
               onClick={() => onStageChange(stage.id)}
               className={cn(
                 "relative w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300",
-                isActive && "bg-app-blue text-white scale-110 shadow-md",
-                isCompleted && "bg-app-green text-white",
+                isActive && "bg-app-blue text-black scale-110 shadow-md", // Changed text-white to text-black
+                isCompleted && "bg-app-green text-black", // Changed text-white to text-black
                 isUpcoming && "bg-gray-200 text-gray-500"
               )}
             >

@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { 
@@ -98,6 +99,40 @@ const Canvas: React.FC<CanvasProps> = ({
     }
     
     onNewHistoryEntry();
+  };
+  
+  // Implement undo functionality - expose this method to parent component
+  window.undoCanvas = () => {
+    if (historyRef.current.length <= 1) {
+      toast.info("Nothing to undo!");
+      return;
+    }
+    
+    // Remove the current state
+    historyRef.current.pop();
+    
+    // Get the previous state
+    const previousState = historyRef.current[historyRef.current.length - 1];
+    
+    if (previousState) {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      
+      // Load the previous state
+      const img = new Image();
+      img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = previousState.dataUrl;
+      
+      onNewHistoryEntry();
+    }
   };
   
   // Apply drawing settings from the currently selected tool
