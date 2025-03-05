@@ -1,25 +1,30 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, Smile, Palette, Cat, Mountain } from 'lucide-react';
 
 export type DrawingCategory = 'person' | 'face' | 'cartoon' | 'animal' | 'landscape';
 
 interface CategoryCardProps {
   category: DrawingCategory;
   title: string;
-  icon: React.ReactNode;
+  imageUrl: string;
   onSelect: (category: DrawingCategory) => void;
   delay: number;
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({ category, title, icon, onSelect, delay }) => (
+const CategoryCard: React.FC<CategoryCardProps> = ({ category, title, imageUrl, onSelect, delay }) => (
   <div 
     className={`category-card category-card-${category} animate-slide-up`} 
     style={{ animationDelay: `${delay}ms` }}
     onClick={() => onSelect(category)}
   >
-    <div className="category-icon">{icon}</div>
+    <div className="category-icon">
+      <img 
+        src={imageUrl} 
+        alt={title} 
+        className="w-10 h-10 object-contain"
+      />
+    </div>
     <h3 className="text-lg font-medium">{title}</h3>
   </div>
 );
@@ -37,37 +42,23 @@ const CategoryMenu: React.FC = () => {
         <CategoryCard 
           category="person" 
           title="Person" 
-          icon={<User className="text-app-blue" />} 
+          imageUrl="https://i.imgur.com/1ID8bSb.jpeg" 
           onSelect={handleCategorySelect}
           delay={100}
         />
         <CategoryCard 
           category="face" 
           title="Face" 
-          icon={<Smile className="text-app-purple" />} 
+          imageUrl="https://i.imgur.com/EiJqtF1.png" 
           onSelect={handleCategorySelect}
           delay={200}
         />
         <CategoryCard 
-          category="cartoon" 
-          title="Cartoon Character" 
-          icon={<Palette className="text-app-orange" />} 
-          onSelect={handleCategorySelect}
-          delay={300}
-        />
-        <CategoryCard 
           category="animal" 
           title="Animal" 
-          icon={<Cat className="text-app-green" />} 
+          imageUrl="https://i.imgur.com/zzPBKCL.png" 
           onSelect={handleCategorySelect}
-          delay={400}
-        />
-        <CategoryCard 
-          category="landscape" 
-          title="Landscape" 
-          icon={<Mountain className="text-app-blue" />} 
-          onSelect={handleCategorySelect}
-          delay={500}
+          delay={300}
         />
       </div>
     </div>
