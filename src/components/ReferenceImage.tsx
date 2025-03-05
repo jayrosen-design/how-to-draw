@@ -8,28 +8,28 @@ import { DrawingCategory } from './CategoryMenu';
 // Mapping of reference images for each category and stage
 const referenceImages: Record<DrawingCategory, Record<DrawingStage, string>> = {
   person: {
-    sketch: '/references/person-sketch.png',
-    refine: '/references/person-refine.png',
-    ink: '/references/person-ink.png',
-    color: '/references/person-color.png'
+    sketch: 'https://i.imgur.com/1ID8bSb.jpeg',
+    refine: 'https://i.imgur.com/1ID8bSb.jpeg',
+    ink: 'https://i.imgur.com/1ID8bSb.jpeg',
+    color: 'https://i.imgur.com/1ID8bSb.jpeg'
   },
   face: {
-    sketch: '/references/face-sketch.png',
-    refine: '/references/face-refine.png',
-    ink: '/references/face-ink.png',
-    color: '/references/face-color.png'
+    sketch: 'https://i.imgur.com/EiJqtF1.png',
+    refine: 'https://i.imgur.com/EiJqtF1.png',
+    ink: 'https://i.imgur.com/EiJqtF1.png',
+    color: 'https://i.imgur.com/EiJqtF1.png'
   },
   cartoon: {
-    sketch: '/references/cartoon-sketch.png',
-    refine: '/references/cartoon-refine.png',
-    ink: '/references/cartoon-ink.png',
-    color: '/references/cartoon-color.png'
+    sketch: 'https://i.imgur.com/GO3X7FX.png',
+    refine: 'https://i.imgur.com/GO3X7FX.png',
+    ink: 'https://i.imgur.com/GO3X7FX.png',
+    color: 'https://i.imgur.com/GO3X7FX.png'
   },
   animal: {
-    sketch: '/references/animal-sketch.png',
-    refine: '/references/animal-refine.png',
-    ink: '/references/animal-ink.png',
-    color: '/references/animal-color.png'
+    sketch: 'https://i.imgur.com/zzPBKCL.png',
+    refine: 'https://i.imgur.com/zzPBKCL.png',
+    ink: 'https://i.imgur.com/zzPBKCL.png',
+    color: 'https://i.imgur.com/zzPBKCL.png'
   },
   landscape: {
     sketch: '/references/landscape-sketch.png',
