@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -64,7 +63,48 @@ const DrawingCanvas: React.FC = () => {
   const [historyCount, setHistoryCount] = useState(0);
   const [isTracing, setIsTracing] = useState(false);
   
-  const referenceImagePath = `/references/${validCategory}-${currentStage}.png`;
+  const getReferenceImagePath = () => {
+    try {
+      const imageMap = {
+        person: {
+          sketch: 'https://i.imgur.com/1ID8bSb.jpeg',
+          refine: 'https://i.imgur.com/1ID8bSb.jpeg',
+          ink: 'https://i.imgur.com/1ID8bSb.jpeg',
+          color: 'https://i.imgur.com/1ID8bSb.jpeg'
+        },
+        face: {
+          sketch: 'https://i.imgur.com/EiJqtF1.png',
+          refine: 'https://i.imgur.com/EiJqtF1.png',
+          ink: 'https://i.imgur.com/EiJqtF1.png',
+          color: 'https://i.imgur.com/EiJqtF1.png'
+        },
+        cartoon: {
+          sketch: 'https://i.imgur.com/GO3X7FX.png',
+          refine: 'https://i.imgur.com/GO3X7FX.png',
+          ink: 'https://i.imgur.com/GO3X7FX.png',
+          color: 'https://i.imgur.com/GO3X7FX.png'
+        },
+        animal: {
+          sketch: 'https://i.imgur.com/zzPBKCL.png',
+          refine: 'https://i.imgur.com/zzPBKCL.png',
+          ink: 'https://i.imgur.com/zzPBKCL.png',
+          color: 'https://i.imgur.com/zzPBKCL.png'
+        },
+        landscape: {
+          sketch: '/references/landscape-sketch.png',
+          refine: '/references/landscape-refine.png',
+          ink: '/references/landscape-ink.png',
+          color: '/references/landscape-color.png'
+        }
+      };
+      
+      return imageMap[validCategory]?.[currentStage] || `/references/${validCategory}-${currentStage}.png`;
+    } catch {
+      return `/references/generic-${currentStage}.png`;
+    }
+  };
+  
+  const traceImagePath = getReferenceImagePath();
   
   useEffect(() => {
     switch (currentStage) {
@@ -151,7 +191,7 @@ const DrawingCanvas: React.FC = () => {
         onStageChange={handleStageChange} 
       />
       
-      <div className="bg-app-blue/10 border border-app-blue/20 p-4 rounded-lg mb-6 animate-fade-in">
+      <div className="mt-4 bg-app-blue/10 border border-app-blue/20 p-4 rounded-lg mb-6 animate-fade-in">
         <p className="text-center font-medium text-gray-700">
           {drawingInstructions[validCategory]?.[currentStage] || 
            "Let's get creative! Draw following the guide lines."}
@@ -159,7 +199,6 @@ const DrawingCanvas: React.FC = () => {
       </div>
       
       <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-        {/* Tools and reference image - now on the left side */}
         <div className="md:order-0 md:w-64 flex flex-col gap-6">
           <ReferenceImage 
             category={validCategory}
@@ -183,7 +222,6 @@ const DrawingCanvas: React.FC = () => {
           </div>
         </div>
         
-        {/* Canvas - now on the right side */}
         <div className="flex-1 canvas-container">
           <Canvas 
             width={800} 
@@ -194,7 +232,7 @@ const DrawingCanvas: React.FC = () => {
             pencilHardness={pencilHardness}
             color={currentColor}
             onNewHistoryEntry={handleNewHistoryEntry}
-            traceImageUrl={referenceImagePath}
+            traceImageUrl={traceImagePath}
             isTracing={isTracing}
           />
         </div>

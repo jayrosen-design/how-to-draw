@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from 'react';
-import { Palette } from 'lucide-react';
 import CategoryMenu from '@/components/CategoryMenu';
 
 const Index: React.FC = () => {
@@ -24,9 +23,10 @@ const Index: React.FC = () => {
         }`}
       >
         <div className="flex items-center justify-center gap-3 mb-2">
-          <Palette 
-            size={40} 
-            className="text-app-blue animate-float"
+          <img 
+            src="https://i.imgur.com/GO3X7FX.png" 
+            alt="Doodle character" 
+            className="w-12 h-12 object-contain animate-float"
           />
           <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-app-blue via-app-purple to-app-orange">
             Doodle Dreams

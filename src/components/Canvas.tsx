@@ -229,7 +229,7 @@ const Canvas: React.FC<CanvasProps> = ({
     <div className="relative">
       {/* Tracing image overlay */}
       {isTracing && traceImageUrl && (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none z-10">
           <img 
             src={traceImageUrl} 
             alt="Tracing reference" 
@@ -239,7 +239,7 @@ const Canvas: React.FC<CanvasProps> = ({
       )}
       <canvas
         ref={canvasRef}
-        className="touch-none relative z-10"
+        className="touch-none relative bg-white"
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={stopDrawing}
