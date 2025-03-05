@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -57,7 +58,7 @@ const DrawingCanvas: React.FC = () => {
   const validCategory = (category || 'person') as DrawingCategory;
   
   const [currentStage, setCurrentStage] = useState<DrawingStage>('sketch');
-  const [currentTool, setCurrentTool] = useState<DrawingTool>('pencil');
+  const [currentTool, setCurrentTool] = useState<DrawingTool>('bluePencil'); // Default to blue pencil
   const [pencilHardness, setPencilHardness] = useState<PencilHardness>('HB');
   const [currentColor, setCurrentColor] = useState('#000000');
   const [historyCount, setHistoryCount] = useState(0);
@@ -68,7 +69,7 @@ const DrawingCanvas: React.FC = () => {
   useEffect(() => {
     switch (currentStage) {
       case 'sketch':
-        setCurrentTool('pencil');
+        setCurrentTool('bluePencil'); // Set blue pencil as default for sketch stage
         break;
       case 'refine':
         setCurrentTool('pencil');
@@ -158,7 +159,8 @@ const DrawingCanvas: React.FC = () => {
       </div>
       
       <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-        <div className="md:order-1 md:w-64 flex flex-col gap-6">
+        {/* Tools and reference image - now on the left side */}
+        <div className="md:order-0 md:w-64 flex flex-col gap-6">
           <ReferenceImage 
             category={validCategory}
             stage={currentStage}
@@ -181,6 +183,7 @@ const DrawingCanvas: React.FC = () => {
           </div>
         </div>
         
+        {/* Canvas - now on the right side */}
         <div className="flex-1 canvas-container">
           <Canvas 
             width={800} 

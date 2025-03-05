@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Pencil, Eraser, Paintbrush, Save, RotateCcw } from 'lucide-react';
@@ -72,7 +71,7 @@ const DrawingTools: React.FC<DrawingToolsProps> = ({
               onClick={() => onToolChange('bluePencil')}
               className="text-app-blue"
             >
-              <Pencil size={20} className="text-app-blue" />
+              <Pencil size={20} className="text-app-blue opacity-50" />
             </ToolButton>
             
             {/* Pencil hardness selector (only visible when pencil tool is active) */}

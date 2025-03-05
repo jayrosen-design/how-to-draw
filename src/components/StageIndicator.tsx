@@ -20,7 +20,7 @@ const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, onStageCh
   const currentIndex = stages.findIndex(stage => stage.id === currentStage);
   
   return (
-    <div className="flex items-center justify-center w-full max-w-md mx-auto mb-4">
+    <div className="flex items-center justify-center w-full max-w-md mx-auto mb-8">
       {stages.map((stage, index) => {
         // Determine if this stage is active, completed, or upcoming
         const isActive = stage.id === currentStage;
@@ -34,8 +34,8 @@ const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, onStageCh
               onClick={() => onStageChange(stage.id)}
               className={cn(
                 "relative w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300",
-                isActive && "bg-app-blue text-black scale-110 shadow-md", // Changed text-white to text-black
-                isCompleted && "bg-app-green text-black", // Changed text-white to text-black
+                isActive && "bg-app-blue text-black scale-110 shadow-md",
+                isCompleted && "bg-app-green text-black",
                 isUpcoming && "bg-gray-200 text-gray-500"
               )}
             >
