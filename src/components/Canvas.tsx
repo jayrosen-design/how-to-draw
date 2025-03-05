@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { 
@@ -10,16 +9,19 @@ import {
 } from '@/utils/drawingUtils';
 import { DrawingTool, PencilHardness } from './DrawingTools';
 import { DrawingStage } from './StageIndicator';
+import type { DrawingCategory } from './CategoryMenu';
 
 interface CanvasProps {
   width: number;
   height: number;
-  category: string;
+  category: DrawingCategory;
   stage: DrawingStage;
   tool: DrawingTool;
   pencilHardness: PencilHardness;
   color: string;
   onNewHistoryEntry: () => void;
+  traceImageUrl?: string;
+  isTracing: boolean;
 }
 
 const Canvas: React.FC<CanvasProps> = ({
@@ -30,7 +32,9 @@ const Canvas: React.FC<CanvasProps> = ({
   tool,
   pencilHardness,
   color,
-  onNewHistoryEntry
+  onNewHistoryEntry,
+  traceImageUrl,
+  isTracing
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -185,19 +189,31 @@ const Canvas: React.FC<CanvasProps> = ({
     }
   };
   
-  // Return the canvas element
+  // Return the canvas element with overlay container
   return (
-    <canvas
-      ref={canvasRef}
-      className="touch-none"
-      onMouseDown={startDrawing}
-      onMouseMove={draw}
-      onMouseUp={stopDrawing}
-      onMouseOut={stopDrawing}
-      onTouchStart={startDrawing}
-      onTouchMove={draw}
-      onTouchEnd={stopDrawing}
-    />
+    <div className="relative">
+      {/* Tracing image overlay */}
+      {isTracing && traceImageUrl && (
+        <div className="absolute inset-0 pointer-events-none">
+          <img 
+            src={traceImageUrl} 
+            alt="Tracing reference" 
+            className="w-full h-full object-contain opacity-50"
+          />
+        </div>
+      )}
+      <canvas
+        ref={canvasRef}
+        className="touch-none relative z-10"
+        onMouseDown={startDrawing}
+        onMouseMove={draw}
+        onMouseUp={stopDrawing}
+        onMouseOut={stopDrawing}
+        onTouchStart={startDrawing}
+        onTouchMove={draw}
+        onTouchEnd={stopDrawing}
+      />
+    </div>
   );
 };
 

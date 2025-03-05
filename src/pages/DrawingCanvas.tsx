@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import Canvas from '@/components/Canvas';
 import StageIndicator, { DrawingStage } from '@/components/StageIndicator';
 import DrawingTools, { DrawingTool, PencilHardness } from '@/components/DrawingTools';
+import ReferenceImage from '@/components/ReferenceImage';
 import { saveCanvasToLocalStorage } from '@/utils/drawingUtils';
 import type { DrawingCategory } from '@/components/CategoryMenu';
 
@@ -63,6 +64,10 @@ const DrawingCanvas: React.FC = () => {
   const [pencilHardness, setPencilHardness] = useState<PencilHardness>('HB');
   const [currentColor, setCurrentColor] = useState('#000000');
   const [historyCount, setHistoryCount] = useState(0);
+  const [isTracing, setIsTracing] = useState(false);
+  
+  // Reference image path for the current category and stage
+  const referenceImagePath = `/references/${validCategory}-${currentStage}.png`;
   
   // Set the initial tool based on the stage
   useEffect(() => {
@@ -88,6 +93,8 @@ const DrawingCanvas: React.FC = () => {
   const handleStageChange = (stage: DrawingStage) => {
     setCurrentStage(stage);
     toast.info(`Switched to ${stage} mode!`);
+    // Turn off tracing when changing stages
+    setIsTracing(false);
   };
   
   // Handle saving the drawing
@@ -120,6 +127,14 @@ const DrawingCanvas: React.FC = () => {
   // Update history count
   const handleNewHistoryEntry = () => {
     setHistoryCount(prev => prev + 1);
+  };
+  
+  // Toggle tracing overlay
+  const handleToggleTrace = (tracingState: boolean) => {
+    setIsTracing(tracingState);
+    if (tracingState) {
+      toast.info("Tracing enabled. Draw over the reference!");
+    }
   };
   
   return (
@@ -155,19 +170,30 @@ const DrawingCanvas: React.FC = () => {
       </div>
       
       <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-        {/* Drawing Tools */}
-        <div className="md:order-1 flex md:flex-col justify-center md:justify-start items-center gap-4 p-2">
-          <DrawingTools 
+        {/* Left Sidebar: Reference Image and Drawing Tools */}
+        <div className="md:order-1 md:w-64 flex flex-col gap-6">
+          {/* Reference Image */}
+          <ReferenceImage 
+            category={validCategory}
             stage={currentStage}
-            currentTool={currentTool}
-            pencilHardness={pencilHardness}
-            currentColor={currentColor}
-            onToolChange={setCurrentTool}
-            onPencilHardnessChange={setPencilHardness}
-            onColorChange={setCurrentColor}
-            onUndo={handleUndo}
-            onSave={handleSave}
+            onToggleTrace={handleToggleTrace}
+            isTracing={isTracing}
           />
+          
+          {/* Drawing Tools */}
+          <div className="flex md:flex-col justify-center md:justify-start items-center gap-4 p-2">
+            <DrawingTools 
+              stage={currentStage}
+              currentTool={currentTool}
+              pencilHardness={pencilHardness}
+              currentColor={currentColor}
+              onToolChange={setCurrentTool}
+              onPencilHardnessChange={setPencilHardness}
+              onColorChange={setCurrentColor}
+              onUndo={handleUndo}
+              onSave={handleSave}
+            />
+          </div>
         </div>
         
         {/* Canvas Container */}
@@ -181,6 +207,8 @@ const DrawingCanvas: React.FC = () => {
             pencilHardness={pencilHardness}
             color={currentColor}
             onNewHistoryEntry={handleNewHistoryEntry}
+            traceImageUrl={referenceImagePath}
+            isTracing={isTracing}
           />
         </div>
       </div>
